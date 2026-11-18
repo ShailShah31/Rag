@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "repo-rag"
+version = "0.1.0"
+description = "Local code retrieval with cited answers"
+requires-python = ">=3.11"
+dependencies = [
+  "anthropic>=0.40",
+  "chromadb>=0.5",
+  "sentence-transformers>=3.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+repo-rag = "repo_rag.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
